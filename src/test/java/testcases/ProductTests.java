@@ -156,27 +156,45 @@ public class ProductTests extends BaseClass {
 				
 				// Update Product
 				//@Test
-				public void testUpdateProduct()
-				{	
-					int productId = configReader.getIntProperty("productId");
-					pojo.Product newUpdatedProduct = payload.productPayload();
-					
-					given()
-					    .contentType(ContentType.JSON)
-					    .pathParam("id",productId)
-					    .body(newUpdatedProduct)
-					
-					.when()
-					    .put(Routes.PRODUCT_UPDATE)
-					
-					.then()
-					   .statusCode(200)
-					   .log().body();
-					  
-				}
+//				public void testUpdateProduct()
+//				{	
+//					int productId = configReader.getIntProperty("productId");
+//					pojo.Product newUpdatedProduct = payload.productPayload();
+//					
+//					given()
+//					    .contentType(ContentType.JSON)
+//					    .pathParam("id",productId)
+//					    .body(newUpdatedProduct)
+//					
+//					.when()
+//					    .put(Routes.PRODUCT_UPDATE)
+//					
+//					.then()
+//					   .statusCode(200)
+//					   .log().body();
+//					  
+//				}
 				
 				// Delete Product
 
+				@Test
+				public void testDelete()
+				{	
+					int productId = configReader.getIntProperty("productId");
+							
+					given()
+					   .contentType(ContentType.JSON)
+					   .pathParam("id",productId)
+						
+								
+					.when()
+					   .delete(Routes.PRODUCT_DELETE)
+								
+					.then()
+					   .statusCode(200);
+								  
+				}		
+				
 				@Test
 				public void testDeleteProduct()
 				{	
